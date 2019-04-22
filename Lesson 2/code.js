@@ -51,7 +51,7 @@ function mult(num1, num2)
 
 function div(num1, num2)
 {
-    if(num2 === 0) return Infinity
+    if(num2 === 0) return Infinity;
     else return num1 / num2;
 }
 
@@ -78,3 +78,51 @@ function mathOperation(arg1, arg2, operation)
 }
 
 console.log(`Задание 5. Кулькулятор. Сумма ${a} + ${b} = ${mathOperation(a,b,'+')}. Разность ${a} - ${b} = ${mathOperation(a,b,'-')}. Произведение ${a} * ${b} = ${mathOperation(a,b,'*')}. Частное ${a} / ${b} =  ${mathOperation(a,b,'/')}`)
+
+// Задание 6.
+
+function power(val,pow)
+{
+    if (pow === 0) return 1;
+    else if (pow > 0)
+    {
+        if (pow === 1) return val;
+        return val * power(val, --pow);
+    }
+    else (pow < 0)
+    {
+        if (pow === -1) return 1/val;
+        return 1/val * power(val, ++pow);
+    }
+}
+
+console.log('Задание 6. ' + power(2,(-4)));
+
+// Задание 7
+let UserStr = prompt('Введите пароль');
+
+function path(pass)
+{
+    if (testLength(pass) && reqSymbol(pass) && startEndSymbol(pass) === true) alert('Корректный пароль');
+    else alert('Некорректный пароль');
+}
+
+function testLength(pass)
+{
+    if (pass.length < 3 || pass.length > 12) return false;
+    return true;
+}
+
+function reqSymbol(pass)
+{
+    if (pass.indexOf('&') === -1 && pass.indexOf('$') === -1 && pass.indexOf('%') === -1 && pass.indexOf('*') === -1) return false;
+    return true;
+}
+
+function startEndSymbol(pass)
+{
+    if (pass.indexOf('q') === 0 || pass.lastIndexOf('z') === (pass.length - 1)) return true;
+    return false;
+}
+
+path(UserStr);
