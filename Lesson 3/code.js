@@ -78,15 +78,12 @@ function countBasketPrice(basket)
     return sum;
 }
 
-/* function display(elem, value) {
+function display(elem, value) {
     document.querySelector(elem).innerHTML = value;
   }
   
   basketSumm = countBasketPrice(basket);
-  display('#summ', `${basketSumm} руб.`); */
-  
-  //------------------
-//   <div id="summ"></div>
+  display('#summ', `Сумма вашей корзины = ${basketSumm} руб.`);
 
 console.log('Сумма вашей корзины = ' + countBasketPrice(basket));
 
