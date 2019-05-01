@@ -6,9 +6,22 @@ let a =
     [{name: 'Karl', age: 34}, {name: 'Marta', age: 76}, {name: 'John', age: 19}]
 ];
 
-let b = Object.assign({}, a);
+let b=[];
+
+a.forEach(function(elem,key)
+{
+    b[key] = [];
+    elem.forEach(function(elem2,key2)
+    {
+        b[key][key2] = Object.assign({},elem2);
+    });
+});
+
 console.log('Задание 1');
+
+a[0][0].name=0;
 console.log(b);
+console.log(b[0][0].name);
 
 // Задание 2
 console.log('Задание 2');
