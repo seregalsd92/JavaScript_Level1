@@ -10,7 +10,13 @@ let renderer = {
         for(let y = 0; y < config.rowsCount; y++) {
             board += '<tr>';
             for (let x = 0; x < config.colsCount; x++) {
-                board += `<td data-x="${x}" data-y="${y}"></td>`;
+                
+                if (y === 5 && x === 4 || y === 2 && x === 8) {
+                    board += `<td data-barrier="true" data-x="${x}" data-y="${y}"></td>`;
+                }
+                else {
+                    board += `<td data-barrier="false" td data-x="${x}" data-y="${y}"></td>`;
+                }
             }
             board += "</tr>";
         }
@@ -23,7 +29,7 @@ let renderer = {
     },
 
     getSquare(position) {
-        return document.querySelector(`[data-x="${position.x}"][data-y="${position.y}"]`);
+        return document.querySelector(`[data-x="${position.x}"][data-y="${position.y}"][data-barrier="false"]`);
     },
 
     clearUserPosition() {

@@ -13,6 +13,10 @@ td {
     border: 2px solid black;
 }
 
+td[data-barrier = "true"] {
+    background-color: black;
+}
+
 .user {
     background: darkred;
 }
