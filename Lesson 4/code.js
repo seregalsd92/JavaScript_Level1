@@ -110,14 +110,22 @@ let Basket =
     putProduct(id,col) {
         if (db[id].quantity >= col)
         { 
-            let prod = 
-            {
-                id: id,
-                count: col,
-                price: db[id].price
-            };
-            this.goodlist.push(prod);
-            db[id].quantity -= col; 
+            let idx = this.goodlist.findIndex(function(elem) {
+                return elem.id === id;
+            });
+            if (idx === -1) {
+                let prod = 
+                {
+                    id: id,
+                    count: col,
+                    price: db[id].price
+                };
+                this.goodlist.push(prod);
+                db[id].quantity -= col; 
+            }
+            else {
+                this.goodlist[idx].count += col;
+            }
         }
         else
         {
@@ -142,11 +150,10 @@ let Basket =
     }
 };
 
-for (let index in db) {
-    if (index % 2 === 0) {
+for (let index = 0; index < db.length; index++) {
+    if(index % 2 === 0) {
         Basket.putProduct(index,1);
-    }
-    else {
+    } else {
         Basket.putProduct(index,2);
     }
 }

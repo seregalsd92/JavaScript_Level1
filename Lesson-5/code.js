@@ -72,30 +72,31 @@ let db =
 let Basket = 
 {
     goodlist: [],
-    basketStatus() {
-        if (this.goodlist.length === 0) {
-            display('#basket', 'Корзина пуста');
-        } else {
-            display('#basket', `В корзине ${this.countTotalNumber()} товаров на сумму ${this.countTotalPrice()} рублей`);
-        }
-    },
     putProduct(id,col) {
         if (db[id].quantity >= col)
         { 
-            let prod = 
-            {
-                id: id,
-                count: col,
-                price: db[id].price
-            };
-            this.goodlist.push(prod);
-            db[id].quantity -= col; 
+            let idx = this.goodlist.findIndex(function(elem) {
+                return elem.id === id;
+            });
+            if (idx === -1) {
+                let prod = 
+                {
+                    id: id,
+                    count: col,
+                    price: db[id].price
+                };
+                this.goodlist.push(prod);
+                db[id].quantity -= col; 
+            }
+            else {
+                this.goodlist[idx].count += col;
+            }
         }
         else
         {
             console.log('Запрашиваемое количество товара превышает его количество на складе');
         }
-        this.basketStatus();
+        this.printBasketTotalValues();
     },
     countTotalPrice() {
         let sum = 0;
@@ -112,21 +113,30 @@ let Basket =
             num += el.count;
         });
         return num;
+    },
+    printBasketTotalValues() {
+        let basketDiv = document.getElementById('basket');
+        let goodListStr = 'Корзина пуста';
+        if (this.goodlist.length > 0) {
+            goodListStr = '<ul>';
+            for (let i = 0; i < this.goodlist.length; i++) {
+                goodListStr += this.generateBasketItem(i);
+            }
+            goodListStr += `</ul><p>Общая стоимость корзины = ${Basket.countTotalPrice()} руб.
+            Общее количество товаров в корзине = ${Basket.countTotalNumber()} шт.`
+        }
+        basketDiv.innerHTML = goodListStr;
+    },
+    generateBasketItem(index) {
+        let currentItem = this.goodlist[index];
+        return `<li>${index+1}. ${db[currentItem.id].name}, ${currentItem.count}шт, ${currentItem.price}руб/шт.`;
     }
 };
 
-function display(elem, value) {
-    document.querySelector(elem).innerHTML = value;
-}
-
-for (let index in db) {
-    if (index % 2 === 0) {
+for (let index = 0; index < db.length; index++) {
+    if(index % 2 === 0) {
         Basket.putProduct(index,1);
-    }
-    else {
+    } else {
         Basket.putProduct(index,2);
     }
 }
-
-console.log(`Общая стоимость корзины = ${Basket.countTotalPrice()} руб.
-Общее количество товаров в корзине = ${Basket.countTotalNumber()} шт.`);
