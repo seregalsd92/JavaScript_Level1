@@ -7,7 +7,7 @@ let db =
         price: 27,
         quantity: 7,
         desc: 'blue',
-        image: './img/pngtest.png'
+        image: './img/pen.jpg'
     },
     {
         article: 22352,
@@ -15,7 +15,7 @@ let db =
         price: 12,
         quantity: 8,
         desc: 'HB',
-        image: './img/pngtest.png'
+        image: './img/pencil.jpg'
     },
     {
         article: 35432,
@@ -23,7 +23,7 @@ let db =
         price: 34,
         quantity: 9,
         desc: 'A6 format',
-        image: './img/pngtest.png'
+        image: './img/notebook.png'
     },
     {
         article: 2345,
@@ -31,7 +31,7 @@ let db =
         price: 8,
         quantity: 12,
         desc: 'double',
-        image: './img/pngtest.png'
+        image: './img/rubber.jpg'
     },
     {
         article: 9234,
@@ -39,7 +39,7 @@ let db =
         price: 56,
         quantity: 11,
         desc: '48 sheets',
-        image: './img/pngtest.png'
+        image: './img/copybook.jpg'
     },
     {
         article: 8341,
@@ -47,7 +47,7 @@ let db =
         price: 23,
         quantity: 5,
         desc: '30 cm. Orange.',
-        image: './img/pngtest.png'
+        image: './img/line.jpg'
     },
     {
         article: 4572,
@@ -55,7 +55,7 @@ let db =
         price: 28,
         quantity: 6,
         desc: '20 ml',
-        image: './img/pngtest.png'
+        image: './img/correction fluid.jpg'
     },
     {
         article: 2399,
@@ -63,7 +63,7 @@ let db =
         price: 51,
         quantity: 24,
         desc: 'double. metall.',
-        image: './img/pngtest.png'
+        image: './img/pencil sharpener.jpg'
     }
 ];
 
