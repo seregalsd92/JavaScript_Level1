@@ -1,0 +1,58 @@
+body {
+  background: rgb(141, 106, 54);
+  font-weight: bold;
+}
+
+.products {
+  display: flex;
+}
+
+.productCard {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  height: 90px;
+  width: 80px;
+  text-align: center;
+  line-height: 1.4em;
+}
+
+.Product-1 {
+  background: lightsteelblue;
+}
+
+.Product-2 {
+  background: lightblue;
+}
+
+.Product-3 {
+  background: lightcyan;
+}
+
+.Product-4 {
+  background: lightgrey;
+}
+
+#userShopBasket {
+  position: absolute;
+  bottom: 0;
+  right: 50px;
+  border: 1px solid black;
+  width: 250px;
+  height: 250px;
+  text-align: center;
+  padding-top: 25px;
+  overflow: auto;
+  background: lightgoldenrodyellow;
+}
+
+.basketProductList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.productCount {
+  font-size: 2em;
+  line-height: 112px;
+}

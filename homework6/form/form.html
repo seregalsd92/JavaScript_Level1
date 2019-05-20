@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Form</title>
+        <link href="css\bootstrap.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <form class="form-horizontal">
+                <fieldset>
+                    <!-- Form Name -->
+                    <legend>Registration form</legend>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="login">Login</label>
+                        <div class="col-md-4">
+                            <input id="login" name="login" type="text" placeholder="" class="form-control input-md" >
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <!-- Password input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="passwordinput">Password</label>
+                        <div class="col-md-4">
+                            <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <!-- Password input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="passwordconfirmation">Password confirmation</label>
+                        <div class="col-md-4">
+                            <input id="passwordconfirmation" name="passwordconfirmation" type="password" placeholder="" class="form-control input-md">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="submit"></label>
+                        <div class="col-md-4">
+                            <button id="register" name="submit" class="btn btn-primary">Register</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <script async src="form.js"></script>
+    </body>
+</html>
