@@ -25,6 +25,38 @@ let snake = {
         }
     },
 
+/*     teleport() {
+        let nextHeadPoint = this.getNextStepHeadPoint();
+        let res = null;
+
+        if (nextHeadPoint.x >= settings.colsCount) {
+            res = {x: 0, y: nextHeadPoint.y};
+        } else if (nextHeadPoint.y >= settings.rowsCount) {
+            res = {x: nextHeadPoint.x, y: 0};
+        } else if (nextHeadPoint.x < 0) {
+            res = {x: settings.colsCount - 1, y: nextHeadPoint.y};
+        } else if (nextHeadPoint.y < 0) {
+            res = {x: nextHeadPoint.x, y: settings.rowsCount - 1};
+        }
+        return res;
+    }, */
+
+    teleport(nextHeadPoint) {
+        // let nextHeadPoint = this.getNextStepHeadPoint();
+        let res = null;
+
+        if (nextHeadPoint.x >= settings.colsCount) {
+            res = {x: 0, y: nextHeadPoint.y};
+        } else if (nextHeadPoint.y >= settings.rowsCount) {
+            res = {x: nextHeadPoint.x, y: 0};
+        } else if (nextHeadPoint.x < 0) {
+            res = {x: settings.colsCount - 1, y: nextHeadPoint.y};
+        } else if (nextHeadPoint.y < 0) {
+            res = {x: nextHeadPoint.x, y: settings.rowsCount - 1};
+        }
+        return res;
+    },
+
     makeStep() {
         //[{x: 5, y: 5}, {x: 6, y: 5}, {x: 7, y: 5}]
 
@@ -32,7 +64,11 @@ let snake = {
 
         //[{x: 4, y: 5}, {x: 5, y: 5}, {x: 6, y: 5}]
         this.lastStepDirection = this.direction;
+        if (this.teleport(this.getNextStepHeadPoint()) !== null) {
+            this.body.unshift(this.teleport(this.getNextStepHeadPoint()));
+        } else {
         this.body.unshift(this.getNextStepHeadPoint());
+        }
         this.body.pop();
     },
 

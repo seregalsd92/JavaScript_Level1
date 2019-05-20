@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     background: #2e353d;
+    
 }
 
 .menuButton {
@@ -20,9 +21,20 @@
 
 #game {
     border-collapse: collapse;
+    justify-content: center;
     margin: 2% auto 0;
 }
 
+#game-count {
+    position: absolute;
+    left: 100px;
+    top: 50px;
+    /* margin: 2% auto 0; */
+    padding: 5px 10px;
+    width: auto;
+    border: 4px dotted lightblue;
+    color: #e5e5e5;
+}
 #menu {
     display: flex;
     justify-content: center;
@@ -36,7 +48,9 @@ td.cell {
 }
 
 .food {
-    background: #00d021;
+    /* background: #00d021; */
+    background: url(http://яблочко51.рф/wp-content/uploads/2018/08/green-apple-2.png) center center no-repeat;
+    background-size: 20px;
 }
 
 .snakeBody {

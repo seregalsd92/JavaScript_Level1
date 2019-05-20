@@ -7,6 +7,7 @@ let game = {
     food,
     tickInterval: null,
     status,
+    gameCounter,
 
     init(userSettings = {}) {
         Object.assign(this.settings, userSettings);
@@ -16,7 +17,7 @@ let game = {
         }
 
         this.renderer.renderMap(this.settings.rowsCount, this.settings.colsCount);
-
+        this.gameCounter.gameCount();
         this.setEventHandlers();
 
         this.snake.init(this.getStartSnakePoint(), 'up');
@@ -27,6 +28,8 @@ let game = {
 
     reset() {
         this.stop();
+        this.gameCounter.gCount = 0;
+        this.gameCounter.gameCount();
         this.snake.init(this.getStartSnakePoint(), 'up');
         this.food.setFoodCoordinates(this.getRandomCoordinates());
         this.render();
@@ -47,10 +50,14 @@ let game = {
             this.finish();
             return;
         }
+        
 
         if(this.food.isFoodPoint(this.snake.getNextStepHeadPoint())) {
+            this.gameCounter.gameCount();
             this.snake.incrementBody();
             this.food.setFoodCoordinates(this.getRandomCoordinates());
+            /* this.settings.speed++; пытался увеличить скорость
+            this.tickInterval = setInterval( () => game.tickHandler(), 1000 / this.settings.speed); */
             if(this.isGameWon()) {
                 this.finish();
             }
@@ -170,16 +177,11 @@ let game = {
 
     canSnakeMakeStep() {
         let nextHeadPoint = this.snake.getNextStepHeadPoint();
-
-        return !this.snake.isBodyPoint(nextHeadPoint) &&
-            nextHeadPoint.x < this.settings.colsCount &&
-            nextHeadPoint.y < this.settings.rowsCount &&
-            nextHeadPoint.x >= 0 &&
-            nextHeadPoint.y >= 0;
-    },
+        return !this.snake.isBodyPoint(nextHeadPoint);
+    }
 };
 
 window.onload = function () {
-    game.init({speed: 3, winLength: 5});
+    game.init({speed: 4, winLength: 6});
 };
 
