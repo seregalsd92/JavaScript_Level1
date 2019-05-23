@@ -1,11 +1,21 @@
-let gameCounter = {
-    gCount: 0,
-    divGameCount: document.getElementById('game-count'),
+"use strict";
 
-    gameCount() {   
-        this.divGameCount.innerHTML = 'Счёт игры:<br>';
-        this.divGameCount.innerHTML += `${this.gCount}`;
-        this.gCount++;
+function gameCounter() {
+    let gCount = 0;
+    let divGameCount = document.getElementById('game-count');
+
+    function setDefault() {
+        gCount = 0;
+    }
+    
+    function gameCount() {   
+        divGameCount.innerHTML = 'Счёт игры:<br>';
+        divGameCount.innerHTML += `${gCount}`;
+        gCount++;
     }
 
-};
+    return {
+        setDefault: setDefault,
+        gameCount: gameCount
+    }
+}
