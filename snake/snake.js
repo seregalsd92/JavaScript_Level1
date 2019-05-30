@@ -25,7 +25,7 @@ let snake = {
         }
     },
 
-    teleport(nextHeadPoint) {
+    /* teleport(nextHeadPoint) {
         let res = null;
 
         if (nextHeadPoint.x >= settings.colsCount) {
@@ -38,7 +38,7 @@ let snake = {
             res = {x: nextHeadPoint.x, y: settings.rowsCount - 1};
         }
         return res;
-    },
+    }, */
 
     makeStep() {
         //[{x: 5, y: 5}, {x: 6, y: 5}, {x: 7, y: 5}]

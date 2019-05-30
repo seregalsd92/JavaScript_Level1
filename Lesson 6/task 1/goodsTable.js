@@ -12,9 +12,10 @@ let htmlPage = {
         goodsDiv = document.getElementById('basket');
         //добавляем таблицу в body
         goodsDiv.insertAdjacentHTML("beforebegin", board);
-        buttonElements = document.querySelectorAll('button');
+        buttonElements = document.querySelectorAll('input');
         for (let i = 0; i < buttonElements.length; i++) {
             buttonElements[i].addEventListener('click', function(event) {
+                // event.preventDefault();
                 let tdCurr = event.path.find (function(element) {
                     return element.tagName === 'TD';
                 });
@@ -54,7 +55,7 @@ let htmlPage = {
         <img src="${db[currGood].image}">
         <h4>${db[currGood].name}</h4>
         <p>${db[currGood].desc}</p>
-        <button>Купить</button>
+        <input type="submit" value="Купить"></input>
         </td>`;
     },
 
