@@ -15,7 +15,7 @@ let htmlPage = {
         buttonElements = document.querySelectorAll('input');
         for (let i = 0; i < buttonElements.length; i++) {
             buttonElements[i].addEventListener('click', function(event) {
-                // event.preventDefault();
+                event.preventDefault();
                 let tdCurr = event.path.find (function(element) {
                     return element.tagName === 'TD';
                 });
