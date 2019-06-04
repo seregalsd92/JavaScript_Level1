@@ -1,25 +1,33 @@
 "use strict";
 
-let status = {
-    condition: null,
+function status() {
+    let condition = null;
 
-    setPlaying() {
-        this.condition = 'playing';
-    },
-
-    setStopped() {
-        this.condition = 'stopped';
-    },
-
-    setFinished() {
-        this.condition = 'finished';
-    },
-
-    isPlaying() {
-        return this.condition === 'playing';
-    },
-
-    isStopped() {
-        return this.condition === 'stopped';
+    function setPlaying() {
+        condition = 'playing';
     }
-};
+
+    function setStopped() {
+        condition = 'stopped';
+    }
+
+    function setFinished() {
+        condition = 'finished';
+    }
+
+    function isPlaying() {
+        return condition === 'playing';
+    }
+
+    function isStopped() {
+        return condition === 'stopped';
+    }
+
+    return {
+        setPlaying: setPlaying,
+        setStopped: setStopped,
+        setFinished: setFinished,
+        isPlaying: isPlaying,
+        isStopped: isStopped
+    }
+}

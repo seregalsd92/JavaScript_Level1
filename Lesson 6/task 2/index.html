@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+	<meta charse="utf-8">
+    <title>Форма проверки пароля</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script defer src="code.js"></script>
+</head>
+<body>
+    <div id="main-form">
+        <form action="" name="auth">
+                <legend>Registration form</legend>
+                <div class="form-group">
+                    <label for="login">Login</label>
+                    <input type="text" id="login" name="login" checked>
+                    <div id="login-hint" class="help-block"></div>
+                </div>
+                <div class="form-group">
+                    <label for="pass">Password</label>
+                    <input type="password" id="pass" name="pass">
+                    <div id="pass-hint" class="help-block"></div>
+                </div>
+                <div class="form-group">
+                    <label for="r-pass">Repeat password</label>
+                    <input type="password" id="r-pass" name="pass2">
+                    <div id="r-pass-hint" class="help-block"></div>
+                </div>
+                <button>Валидировать</button>
+        </form>
+    </div>
+</body>
+</html>

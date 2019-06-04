@@ -1,8 +1,8 @@
 "use strict";
 
-let renderer = {
-    cells: {},
-    renderMap(rowsCount, colsCount) {
+function renderer () {
+    let cells = {};
+    function renderMap(rowsCount, colsCount) {
         let table = document.getElementById('game');
         table.innerText = '';
 
@@ -15,20 +15,25 @@ let renderer = {
                 let td = document.createElement('td');
                 td.classList.add('cell');
                 tr.appendChild(td);
-                this.cells[`x${col}_y${row}`] = td;
+                cells[`x${col}_y${row}`] = td;
             }
         }
-    },
+    }
 
-    render(snakePointArray, foodPoint) {
-        for (let key of Object.getOwnPropertyNames(this.cells)) {
-            this.cells[key].className = 'cell';
+    function render(snakePointArray, foodPoint) {
+        for (let key of Object.getOwnPropertyNames(cells)) {
+            cells[key].className = 'cell';
         }
 
         snakePointArray.forEach((point, idx) => {
-            this.cells[`x${point.x}_y${point.y}`].classList.add(idx === 0 ? 'snakeHead' : 'snakeBody');
+            cells[`x${point.x}_y${point.y}`].classList.add(idx === 0 ? 'snakeHead' : 'snakeBody');
         });
 
-        this.cells[`x${foodPoint.x}_y${foodPoint.y}`].classList.add('food');
+        cells[`x${foodPoint.x}_y${foodPoint.y}`].classList.add('food');
+    }
+
+    return {
+        renderMap: renderMap,
+        render: render
     }
 };
