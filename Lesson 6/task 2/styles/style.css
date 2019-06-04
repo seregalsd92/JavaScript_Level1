@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.help-block {
+    font: italic 14px/14px sans-serif;
+    color: rgb(233, 75, 75);
+    margin-top: 7px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+#main-form {
+    width: 400px;
+    margin: 30px 20px 20px 50px;
+}
+
+form[name="auth"] {
+    margin: 0 auto;
+    padding: 10px;
+    background: rgb(221, 236, 241);
+}
+
+form input {
+    margin-left: 3px;
+}
+
+form input[data-error] {
+    margin-left: 3px;
+    border: 1.5px dotted red;
+}
+
+legend {
+    text-align: center;
+    margin-bottom: 1rem;
+}

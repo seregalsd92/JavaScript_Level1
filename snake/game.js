@@ -2,12 +2,12 @@
 
 let game = {
     settings,
-    renderer,
+    renderer: renderer(),
     snake,
-    food,
+    food: food(),
     tickInterval: null,
-    status,
-    gameCounter,
+    status: status(),
+    gameCounter: gameCounter(),
 
     init(userSettings = {}) {
         Object.assign(this.settings, userSettings);
@@ -22,13 +22,12 @@ let game = {
 
         this.snake.init(this.getStartSnakePoint(), 'up');
         this.food.setFoodCoordinates(this.getRandomCoordinates());
-
         this.reset();
     },
 
     reset() {
         this.stop();
-        this.gameCounter.gCount = 0;
+        this.gameCounter.setDefault();
         this.gameCounter.gameCount();
         this.snake.init(this.getStartSnakePoint(), 'up');
         this.food.setFoodCoordinates(this.getRandomCoordinates());
@@ -182,6 +181,6 @@ let game = {
 };
 
 window.onload = function () {
-    game.init({speed: 4, winLength: 6});
+    game.init({speed: 4, winLength: 5});
 };
 
