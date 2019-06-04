@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 6</title>
+</head>
+<body>
+
+<div id="main"></div>
+
+<style>
+
+    body {
+        font-family: sans-serif;
+    }
+
+    .cart-block {
+        font-size: 18px;
+        font-weight: 700;
+        color: #000000;
+    }
+
+    #main {
+        width: 600px;
+        height: 550px;
+        background-color: #cde4ff;
+        padding: 20px;
+    }
+
+    .product-card {
+        width: 140px;
+        height: 180px;
+        padding: 10px;
+        float: left;
+        background-color: rgba(211, 211, 211, 0.35);
+        border: 3px solid grey;
+        margin-right: 30px;
+        margin-bottom: 30px;
+    }
+
+    img {
+        width: 140px;
+        height: 100px;
+    }
+
+    h2 {
+        margin: 0;
+        text-align: left;
+        font-size: 22px;
+    }
+
+    p {
+        margin: 5px 0;
+        text-align: left;
+        font-size: 18px;
+    }
+
+    button {
+        width: 80px;
+        height: 20px;
+        background-color: #afb0ff;
+        border: 3px solid grey;
+        font-size: 10px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+</style>
+
+<script>
+    "use strict";
+
+    let priceList = [
+        {name: 'Клубника', price: 350, img: 'http://www.vsluh.ru/uploads/base_image/image/113227/huge_bb8b94e9-f189-485b-814b-8f6faeecd48c.jpg'},
+        {name: 'Черника', price: 370, img: 'https://hozoboz.com/wp-content/uploads/2014/03/chernika.jpg'},
+        {name: 'Морошка', price: 200, img: 'http://lammy.ru/img/bez_soli_i_sahara/moroshka/moroshka1.jpg'},
+        {name: 'Малина', price: 400, img: 'https://s1.1zoom.ru/prev2/551/Closeup_Raspberry_Texture_Many_550991_300x200.jpg'},
+        {name: 'Ежевика', price: 550, img: 'http://xn----dtbfomiqcfic1al.xn--p1ai/wp-content/uploads/2016/11/frozen_blackberries-1024x768-1.jpg'},
+        {name: 'Вишня', price: 150, img: 'http://st.oede.by/st/img/publication/682x405/3849.jpg'}
+    ];
+
+    let Basket = {
+        goodList: [],
+        countTotalPrice (price) {
+            let totalPrice = 0;
+            this.goodList.forEach(price => {
+                totalPrice += price
+            });
+            return totalPrice;
+        },
+        countTotalNumber(count) {
+            let totalNumber = 0;
+            totalNumber += count;
+            return totalNumber
+        },
+        putProduct (price) {
+            let count = 0;
+            count +=
+            this.goodList.push(price);
+            this.basketText(price, count)
+        },
+        basketText (price, count) {
+            if (this.goodList.length) {
+                document.getElementById('basketText').innerText = `В корзине: ${this.countTotalNumber(count)} товаров на сумму ${this.countTotalPrice(price)} рублей`;
+            }
+        }
+    };
+
+    let productList = {
+        createProductCards () {
+            let basketContainer = document.getElementById('main');
+            for (let i = 0; i < priceList.length; i++) {
+                let productName = priceList[i].name;
+                let productPrice = priceList[i].price;
+                let productImage = priceList[i].img;
+                basketContainer.innerHTML += `<div class="product-card">
+                        <img src="${productImage}" alt="${productName}">
+                        <h2>${productName}</h2>
+                        <p>Цена ${productPrice}₽</p>
+                        <button onclick="Basket.putProduct(${productPrice})" id="button">Купить</button>
+                    </div>`;
+            }
+            basketContainer.innerHTML += `<div id="basketText" class="cart-block">Корзина пуста</div>`;
+        },
+    };
+    productList.createProductCards();
+
+</script>
+</body>
+</html>
