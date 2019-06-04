@@ -1,38 +1,3 @@
-// Задание 1
-console.log('Задание 1');
-
-function numToObj()
-{
-    let outObj = {};
-    let key;
-    let userNum = prompt('Введите 3-х значное число');
-    
-    if (userNum <= 999 && !isNaN(Number(userNum)))
-    {
-        let userArr = userNum.split('');
-        for (let i = 0; i < userNum.length; i++)
-        {
-            switch(i)
-            {
-                case 0: key = 'units';
-                break;
-                case 1: key = 'tens';
-                break;
-                case 2: key = 'hundreds';
-                break;
-            }
-            outObj[key] = userArr.pop();
-        }
-    }
-    else
-    {
-        console.log('Ваше число больше 999 или не является числом');
-    }
-
-    return outObj;
-}
-console.log(numToObj());
-
 // Задание 2
 console.log('Задание 2');
 let db =
@@ -131,6 +96,7 @@ let Basket =
         {
             console.log('Запрашиваемое количество товара превышает его количество на складе');
         }
+        this.printBasketTotalValues();
     },
     countTotalPrice() {
         let sum = 0;
@@ -147,6 +113,23 @@ let Basket =
             num += el.count;
         });
         return num;
+    },
+    printBasketTotalValues() {
+        let basketDiv = document.getElementById('basket');
+        let goodListStr = 'Корзина пуста';
+        if (this.goodlist.length > 0) {
+            goodListStr = '<ul>';
+            for (let i = 0; i < this.goodlist.length; i++) {
+                goodListStr += this.generateBasketItem(i);
+            }
+            goodListStr += `</ul><p>Общая стоимость корзины = ${Basket.countTotalPrice()} руб.
+            Общее количество товаров в корзине = ${Basket.countTotalNumber()} шт.`
+        }
+        basketDiv.innerHTML = goodListStr;
+    },
+    generateBasketItem(index) {
+        let currentItem = this.goodlist[index];
+        return `<li>${index+1}. ${db[currentItem.id].name}, ${currentItem.count}шт, ${currentItem.price}руб/шт.`;
     }
 };
 
@@ -157,6 +140,3 @@ for (let index = 0; index < db.length; index++) {
         Basket.putProduct(index,2);
     }
 }
-
-console.log(`Общая стоимость корзины = ${Basket.countTotalPrice()} руб.
-Общее количество товаров в корзине = ${Basket.countTotalNumber()} шт.`);
