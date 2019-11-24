@@ -3,7 +3,7 @@ let counter = {
 
     manaComplite(speed, moves, cubes, manaCoeff) {
         let currentMana = moves*settings.movesCoeff*manaCoeff + cubes*settings.cubeCoeff*manaCoeff;
-        if (currentMana >= settings[speed]) {
+        if (currentMana >= speed) {
             return true;
         } else {
             return false;
@@ -57,11 +57,11 @@ let counter = {
     },
 
     rowsCount(speed) {
-        return Math.ceil(settings[speed] / settings.movesCoeff);
+        return Math.ceil(speed / settings.movesCoeff);
     },
 
     colsCount(speed) {
-        return Math.ceil(settings[speed] / settings.cubeCoeff + 1);
+        return Math.ceil(speed / settings.cubeCoeff + 1);
     },
 
 };

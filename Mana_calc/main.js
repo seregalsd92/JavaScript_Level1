@@ -1,18 +1,26 @@
 "use strict";
 
 let calc = {
-    // settings,
+    settings,
     counter,
-    manaCoeff: 1.19,
 
     init() {
-        this.counter.renderTable("average", this.manaCoeff);
-        // counter.insertRowsNumbers();
-        // console.log(`Результат: ${res}`);
-    }
+        this.setEventHandlers();
+    },
+
+    playClickHandler(manaCoeff) {
+        this.counter.renderTable(this.settings.veryFast, manaCoeff);
+    },
+
+    setEventHandlers() {
+        document.getElementById('button').onclick =  function () {
+            let manaCoeff = document.querySelector('#score input[type="text"]').value;
+            calc.playClickHandler(manaCoeff);
+        };
+    },
 };
-let score = document.getElementById('score');
-score.innerText = calc.manaCoeff;
+// let score = document.getElementById('score');
+// score.innerText = calc.manaCoeff;
 
 window.onload = function () {
     calc.init();
