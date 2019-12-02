@@ -8,14 +8,33 @@
 <body>
     
     <div id="wrapper">
+        <div id="description">
+            <h2><b>Калькулятор маны для игры <i>Empires & Puzzles.</i></b></h2>
+            <p>Данный калькулятор показывает когда зарядится маной герой в обороне.</p>
+            <p><u>По горизонтали расположено необходимое число кубиков, попавших в героя.</u></p>
+            <p><u>По вертикали необходимое число ходов, которое должно пройти до зарядки героя.</u></p>
+            <p>Посчитайте коэфффециент ускорения маны от отряда, талантов, семьи и прочих бонусов. Введите его в графу для Коэффициента ускорения маны. Например 1,15 (с 30-ым отрядом). Выберете скорость набора маны героем из списка. Нажмите кнопку "посчитать" или Enter, после установки значения в одном из полей.</p>
+        </div>
         <div id="main">
-                <table id="game"></table>
-                <div id="score">
-                    <p>введите коэффициент<br />ускорения маны</p>
-                    <input type="text" size="5">
-                    <button id="button">посчитать</button>
-                </div>
+            <table id="game"></table>
+            <div id="score">
+                <p>Введите коэффициент<br />ускорения маны</p>
+                <input type="number" min="0" max="100" step="0.1" value="1">
+                <p>Выберите скорость<br>набора маны</p>
+                <!-- <input type="text" size="7"><br /> -->
+                <p>
+                    <select name="heroMana">
+                        <!-- <option disabled>Выберите героя</option> -->
+                        <option selected value="veryFast">very fast</option>
+                        <option value="fast">fast</option>
+                        <option value="average">average</option>
+                        <option value="slow">slow</option>
+                        <option value="verySlow">very slow</option>
+                    </select>
+                </p>
+                <button>посчитать</button>
             </div>
+        </div>
     </div>
         
         <!-- <div id="menu">

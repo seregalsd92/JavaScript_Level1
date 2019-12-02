@@ -3,7 +3,7 @@ let counter = {
 
     manaComplite(speed, moves, cubes, manaCoeff) {
         let currentMana = moves*settings.movesCoeff*manaCoeff + cubes*settings.cubeCoeff*manaCoeff;
-        if (currentMana >= speed) {
+        if (currentMana >= settings[speed]) {
             return true;
         } else {
             return false;
@@ -23,7 +23,7 @@ let counter = {
             tr.classList.add('row');
             table.appendChild(tr);
 
-            for (let col = 0; col < colsCount; col++) {
+            for (let col = 0; col <= colsCount; col++) {
                 let td = document.createElement('td');
                 td.classList.add('cell');
                 if (this.manaComplite(speed, row, col, manaCoeff)) {
@@ -34,6 +34,7 @@ let counter = {
         }
         this.insertRowsNumbers();
         this.insertColsNumber(speed);
+        
     },
 
     insertRowsNumbers() {
@@ -43,25 +44,33 @@ let counter = {
             td.innerText = [trs.length - 1 - i];
             trs[i].insertAdjacentElement("afterbegin", td);
         }
+        let tdDescription = document.createElement('td');
+        tdDescription.setAttribute('rowspan',trs.length);
+        tdDescription.classList.add("vert-text");
+        tdDescription.innerText = "Ходы";
+        trs[0].insertAdjacentElement("afterbegin", tdDescription);
     },
 
     insertColsNumber(speed) {
-        let tr = document.createElement('tr');
         let colsCount = this.colsCount(speed);
-        tr.innerHTML += '<td></td>';
-        for (let i = 0; i < colsCount; i++) {
+        let tr = document.createElement('tr');
+        tr.innerHTML += '<td></td><td></td>';
+        for (let i = 0; i <= colsCount; i++) {
             tr.innerHTML += `<td>${[i]}</td>`;
         }
+        let trfoot = document.createElement('tr');
+        trfoot.innerHTML = `<td colspan="${colsCount +3}">Кубики</td>`;
         let tbody = document.querySelector('table');
         tbody.insertAdjacentElement("beforeend", tr);
+        tbody.insertAdjacentElement("beforeend", trfoot);
     },
 
     rowsCount(speed) {
-        return Math.ceil(speed / settings.movesCoeff);
+        return Math.ceil(settings[speed] / settings.movesCoeff);
     },
 
     colsCount(speed) {
-        return Math.ceil(speed / settings.cubeCoeff + 1);
+        return Math.ceil(settings[speed] / settings.cubeCoeff);
     },
 
 };
