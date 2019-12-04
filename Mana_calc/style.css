@@ -26,6 +26,12 @@ body {
     margin: 15px;
 }
 
+#signature {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+
 #game {
     border-collapse: collapse;
     float: left;

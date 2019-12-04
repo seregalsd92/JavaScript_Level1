@@ -11,8 +11,6 @@ let counter = {
     },
 
     renderTable(speed, manaCoeff) {
-        // let rowsCount = settings[speed] / settings.movesCoeff + 1;
-        // let colsCount = settings[speed] / settings.cubeCoeff + 1;
         let rowsCount = this.rowsCount(speed);
         let colsCount = this.colsCount(speed);
         let table = document.getElementById('game');
